@@ -31,6 +31,20 @@ class FriendshipsController < ApplicationController
         end
 
 
+        def destroy
+            
+            friendship = Friendship.find(params[:id])
+
+            friendship.destroy
+            respond_to do |format|
+              format.json { render json: "Friendship Successfully Deleted" }
+            end
+
+
+
+        end
+
+
 
 
 
