@@ -22,4 +22,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: monkeys_production
+  adapter: postgresql
+  encoding: unicode
+  password:  <%= ENV['DB_PASS'] %>

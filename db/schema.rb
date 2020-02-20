@@ -10,18 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_152410) do
+ActiveRecord::Schema.define(version: 2020_02_20_194450) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "monkey_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "friend"
+    t.integer "friend_id"
     t.index ["monkey_id"], name: "index_friendships_on_monkey_id"
   end
 
   create_table "monkeys", force: :cascade do |t|
-    t.string "type"
     t.string "species"
     t.string "size"
     t.string "socialOrder"
@@ -29,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_02_20_152410) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "monkeyType"
   end
 
   add_foreign_key "friendships", "monkeys"

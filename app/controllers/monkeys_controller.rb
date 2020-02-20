@@ -1,5 +1,5 @@
 class MonkeysController < ApplicationController
-    # before_action :set_monkey, only: [:show, :edit, :update, :destroy]
+    before_action :set_monkey, only: [:show, :edit, :update, :destroy]
   
     # GET /monkeys
     # GET /monkeys.json
@@ -15,7 +15,7 @@ class MonkeysController < ApplicationController
       the_monkey = Monkey.find_by(id: params[:id])
       render json: the_monkey
     end
-    #not sure whether to have this, might handle it with angular
+    #not sure whether to have this, might handle it on the front end
   
     # GET /monkeys/new
     # def new
@@ -35,17 +35,17 @@ class MonkeysController < ApplicationController
         size: params[:size] ,
         socialOrder: params[:socialOrder] ,
         image: params[:image] ,
-        type: params[:type] ,
+        monkeyType: params[:monkeyType] ,
         species: params[:species] ,
         
         )
   
         if monkey.save
           # format.html { redirect_to @monkey, notice: 'Api monkey was successfully created.' }
-          format.json { render :show, status: :created, location: monkey }
+          format.json { render json: monkey, status: :created }
         else
           # format.html { render :new }
-          format.json { render json: monkey.errors, status: :unprocessable_entity }
+          format.json { render json: monkey, status: :unprocessable_entity }
         end
       end
     end
